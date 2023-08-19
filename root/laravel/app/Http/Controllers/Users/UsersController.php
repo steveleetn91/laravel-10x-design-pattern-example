@@ -13,14 +13,14 @@ class UsersController extends Controller
     public function index(Request $request){
         $user = $request->user();
         return Inertia::render('Users/List', [
-            'loggedData' => Auth::user(),
+            'loggedData' => $user,
             'token' => $user->createToken("*")->plainTextToken
         ]);
     }
     public function edit(string $id,Request $request) {
         $user = $request->user();
         return Inertia::render('Users/Edit', [
-            'loggedData' => Auth::user(),
+            'loggedData' => $user,
             'token' => $user->createToken("*")->plainTextToken,
             'userId' => $id
         ]);
@@ -28,7 +28,7 @@ class UsersController extends Controller
     public function create(Request $request) {
         $user = $request->user();
         return Inertia::render('Users/Create', [
-            'loggedData' => Auth::user(),
+            'loggedData' => $user,
             'token' => $user->createToken("*")->plainTextToken
         ]);
     }
