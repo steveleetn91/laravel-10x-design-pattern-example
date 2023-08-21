@@ -40,7 +40,7 @@ class UserAdpteeModelLaravel implements UserAdpteeInterface
         return [
             'email' => $this->request->email ? $this->request->email : '',
             'name' => $this->request->name ? $this->request->name : '',
-            'password' => $this->request->password ? $this->request->password : '',
+            'password' => $this->request->password ? Hash::make($this->request->password) : '',
             'id' => $this->request->id ? $this->request->id : 0
         ];
     }
